@@ -34,15 +34,21 @@ fontname = st.selectbox("폰트 선택", unique(fontNames))
 # 선택을 해서 fontname이 바뀌면 폰트가 바뀝니다.
 plt.rc('font', family=fontname)
 
-# DataFrame 생성
-df = pd.DataFrame({
-    '이름': ['영수', '철수', '민수'],
-    '나이': [22, 31, 25],
-    '몸무게': [75.5, 80.2, 65.1]
-})
+# CSV 파일 읽기
+df = pd.read_csv('recycle data1.csv', encoding='cp949')
+
 
 st.dataframe(df, use_container_width=True)
 # subplots를 실행하면 두 가지 값이 나옵니다. 
 fig, ax = plt.subplots()
-ax.bar(df['이름'], df['나이'])
+bars = ax.barh(df['구분'], df['수도권'])
+ax.set_title("수도권 재활용 가격 kg/원", fontsize=16)
+# 레이블 값 추가 (막대 끝에 값 표시)
+for bar in bars:
+    width = bar.get_width()  # 막대의 길이 (값)
+    ax.text(width, bar.get_y() + bar.get_height()/2,  # 텍스트 위치 설정
+            f'{width:,.0f}',  # 소수점 없이 표시
+            va='center',  # 세로 정렬: 중앙
+            ha='left')  # 가로 정렬: 막대 오른쪽에 배치
+
 st.pyplot(fig)
