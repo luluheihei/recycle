@@ -29,10 +29,10 @@ fm._load_fontmanager(try_read_cache=False)
 fontNames = [f.name for f in fm.fontManager.ttflist]
 
 # 폰트 이름으로 선태 박스를 만듭니다.
-fontname = st.selectbox("폰트 선택", unique(fontNames))
+#fontname = st.selectbox("폰트 선택", unique(fontNames))
 
 # 선택을 해서 fontname이 바뀌면 폰트가 바뀝니다.
-plt.rc('font', family=fontname)
+plt.rc('font', family='NanumGothicOTF')
 
 # CSV 파일 읽기
 df = pd.read_csv('recycle data1.csv', encoding='cp949')
