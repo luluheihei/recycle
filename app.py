@@ -42,7 +42,7 @@ st.dataframe(df, use_container_width=True)
 # subplots를 실행하면 두 가지 값이 나옵니다. 
 fig, ax = plt.subplots()
 bars = ax.barh(df['구분'], df['수도권'])
-ax.set_title("수도권 재활용 가격 kg/원", fontsize=16)
+ax.set_title("수도권 재활용 가격 원/kg", fontsize=16)
 # 레이블 값 추가 (막대 끝에 값 표시)
 for bar in bars:
     width = bar.get_width()  # 막대의 길이 (값)
